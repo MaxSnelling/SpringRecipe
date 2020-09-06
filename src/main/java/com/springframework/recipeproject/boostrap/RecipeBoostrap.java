@@ -60,11 +60,10 @@ public class RecipeBoostrap implements ApplicationListener<ContextRefreshedEvent
 
         Notes testNotes = new Notes();
         testNotes.setRecipeNotes("Be safe");
-        testNotes.setRecipe(testRecipe);
         testRecipe.setNotes(testNotes);
 
-        testRecipe.getIngredients().add(new Ingredient("milk", new BigDecimal(300), mlUnitOfMeasure, testRecipe));
-        testRecipe.getIngredients().add(new Ingredient("flour", new BigDecimal(450), gramUnitOfMeasure, testRecipe));
+        testRecipe.addIngredient(new Ingredient("milk", new BigDecimal(300), mlUnitOfMeasure, testRecipe));
+        testRecipe.addIngredient(new Ingredient("flour", new BigDecimal(450), gramUnitOfMeasure, testRecipe));
 
         testRecipe.getCategories().add(italianCategory);
 
