@@ -1,0 +1,9 @@
+INSERT INTO category (description) VALUES ('French');
+INSERT INTO category (description) VALUES ('Italian');
+INSERT INTO category (description) VALUES ('Chinese');
+INSERT INTO unit_of_measure (description) VALUES ('ml');
+INSERT INTO unit_of_measure (description) VALUES ('L');
+INSERT INTO unit_of_measure (description) VALUES ('g');
+INSERT INTO unit_of_measure (description) VALUES ('Kg');
+INSERT INTO unit_of_measure (description) VALUES ('tsp');
+INSERT INTO unit_of_measure (description) VALUES ('tbsp');
