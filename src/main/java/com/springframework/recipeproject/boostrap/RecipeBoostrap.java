@@ -4,15 +4,18 @@ import com.springframework.recipeproject.domain.*;
 import com.springframework.recipeproject.repositories.CategoryRepository;
 import com.springframework.recipeproject.repositories.RecipeRepository;
 import com.springframework.recipeproject.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBoostrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -27,6 +30,7 @@ public class RecipeBoostrap implements ApplicationListener<ContextRefreshedEvent
     }
 
     private List<Recipe> getRecipies() {
+        log.debug("Initiating recipes");
         List<Recipe> recipes = new ArrayList<>();
 
         Optional<UnitOfMeasure> mlUnitOfMeasureOptional = unitOfMeasureRepository.findByDescription("ml");
@@ -73,6 +77,7 @@ public class RecipeBoostrap implements ApplicationListener<ContextRefreshedEvent
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecipies());
     }
